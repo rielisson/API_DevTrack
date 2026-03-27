@@ -10,12 +10,12 @@ const User = sequelize.define(
             primaryKey: true
         },
         email: {
-            type: DataTypes.CHAR(255),
+            type: DataTypes.STRING(255),
             allowNull: false,
             unique: true,
         },
         senha: {
-            type: DataTypes.CHAR(255),
+            type: DataTypes.STRING(255),
             allowNull: false
         }
     },

@@ -2,11 +2,13 @@ import 'dotenv/config';
 import express from 'express';
 import allRoutes from './routes/route.js';
 import sequelize from './config/db.js';
+import cookieParser from "cookie-parser";
 
 const app = express();
 app.use(express.json());
 
 app.use('/auth', allRoutes);
+app.use(cookieParser());
 
 const port = process.env.PORT;
 
