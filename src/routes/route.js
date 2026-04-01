@@ -16,5 +16,5 @@ router.post('/login', AuthController.login);
 router.get('/getStudy', authMiddleware, StudyLogsController.getStudyLogs);
 router.post('/registerStudy', authMiddleware, StudyLogsController.studyRegister);
 router.post('/addSkill', authMiddleware, SkillsController.addSkill);
-
+router.delete('/study/:id', authMiddleware, StudyLogsController.deleteStudy);
 export default router;

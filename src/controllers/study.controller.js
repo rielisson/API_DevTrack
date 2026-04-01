@@ -29,6 +29,21 @@ class StudyLogsController {
             return res.status(400).json({mgs: "não foi possivel pega os estudos."})
         }
     }
+
+    static async deleteStudy(req, res) {
+        try {
+            const userId = req.userId;
+            const {id} = req.params;
+            const deleteStudy = await StudyService.deleteStudyByUserId(id, userId);
+            if(deleteStudy === 0) {
+                return res.status(404).json({msg: "registro não encontrado."});
+            }
+            return res.status(200).json({msg: "Registro deletado com sucesso."});
+        } catch (error) {
+            console.error("❌ ERRO DETALHADO:", error.errors ? error.errors[0].message : error.message);
+            return res.status(404).json({msg: "erro ao deletar registro de estudo."});
+        }
+    }
 }
 
 export default StudyLogsController;

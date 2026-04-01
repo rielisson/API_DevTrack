@@ -1,7 +1,7 @@
 import StudyLogsModel from "../models/studyLogs.model.js";
 
 class StudyService {
-    static async CreateTask (descricao, categoria, duracao, userId) {
+    static async CreateTask(descricao, categoria, duracao, userId) {
         try {
             const createTask = await StudyLogsModel.create({
                 descricao: descricao,
@@ -17,9 +17,22 @@ class StudyService {
     }
     static async getStudyByUserId(userId) {
         try {
-            const getStudy = await StudyLogsModel.findAll({where: {userId: userId}});
+            const getStudy = await StudyLogsModel.findAll({ where: { userId: userId } });
             console.log(getStudy)
             return getStudy;
+        } catch (error) {
+            throw error;
+        }
+    }
+    static async deleteStudyByUserId(id, userId) {
+        try {
+            const deleteStudy = await StudyLogsModel.destroy({
+                where: {
+                    id: id,
+                    userId: userId
+                }
+            })
+            return deleteStudy;
         } catch (error) {
             throw error;
         }
