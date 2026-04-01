@@ -13,6 +13,8 @@ router.post('/signup', AuthController.signup);
 router.post('/login', AuthController.login);
 
 // rotas de criações de estudos
+router.get('/getStudy', authMiddleware, StudyLogsController.getStudyLogs);
 router.post('/registerStudy', authMiddleware, StudyLogsController.studyRegister);
 router.post('/addSkill', authMiddleware, SkillsController.addSkill);
+
 export default router;

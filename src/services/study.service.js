@@ -15,6 +15,15 @@ class StudyService {
             throw erro;
         }
     }
+    static async getStudyByUserId(userId) {
+        try {
+            const getStudy = await StudyLogsModel.findAll({where: {userId: userId}});
+            console.log(getStudy)
+            return getStudy;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 export default StudyService;
