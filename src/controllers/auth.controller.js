@@ -4,7 +4,7 @@ import User from '../models/user.model.js';
 import jwt from 'jsonwebtoken';
 
 class AuthController {
-    async signup(req, res) {
+    static async signup(req, res) {
         try {
             let { email, senha } = req.body;
             const saltRounds = 10;
@@ -16,7 +16,7 @@ class AuthController {
         }
     }
 
-    async login(req, res) {
+    static async login(req, res) {
         const { email, senha } = req.body;
         try{
             const user = await User.findOne({where: { email }});
@@ -51,4 +51,4 @@ class AuthController {
 
 }
 
-export default new AuthController;
+export default AuthController;

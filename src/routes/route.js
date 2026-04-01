@@ -1,14 +1,16 @@
 import { Router } from "express";
-import AuthControllers from "../controllers/auth.controllers.js";
+import AuthController from "../controllers/auth.controller.js";
+import authMiddleware from "../middleware/auth.middleware.js";
+import StudyLogsController from "../controllers/study.controller.js";
 const router = Router();
 
 router.get('/', (req, res) => {
     res.send("ola");
 })
+// rotas de autenticação
+router.post('/signup', AuthController.signup);
+router.post('/login', AuthController.login);
 
-router.post('/signup', AuthControllers.signup);
-
-router.post('/login', AuthControllers.login);
-
-
+// rotas de criações de estudos
+router.post('/registerStudy', authMiddleware, StudyLogsController.studyRegister);
 export default router;
