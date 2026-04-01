@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import AuthModel from '../models/auth.model.js';
+import AuthService from '../services/auth.service.js';
 import User from '../models/user.model.js';
 import jwt from 'jsonwebtoken';
 
@@ -9,7 +9,7 @@ class AuthController {
             let { email, senha } = req.body;
             const saltRounds = 10;
             let hashPassword = await bcrypt.hash(senha, saltRounds);
-            let createUser = await AuthModel.signup({ email, senha: hashPassword });
+            let createUser = await AuthService.signup({ email, senha: hashPassword });
             res.status(201).json({msg: "Usuario criado com sucesso."})
         } catch (error) {
             return res.status(400).json({msg: "Error ao criar Usuario."});

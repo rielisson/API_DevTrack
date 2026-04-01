@@ -1,6 +1,6 @@
 import StudyLogsModel from "../models/studyLogs.model.js";
 
-class StudyServices {
+class StudyService {
     static async CreateTask (descricao, categoria, duracao, userId) {
         try {
             const createTask = await StudyLogsModel.create({
@@ -17,4 +17,4 @@ class StudyServices {
     }
 }
 
-export default StudyServices;
+export default StudyService;

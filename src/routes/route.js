@@ -2,6 +2,7 @@ import { Router } from "express";
 import AuthController from "../controllers/auth.controller.js";
 import authMiddleware from "../middleware/auth.middleware.js";
 import StudyLogsController from "../controllers/study.controller.js";
+import SkillsController from "../controllers/skills.controller.js";
 const router = Router();
 
 router.get('/', (req, res) => {
@@ -13,4 +14,5 @@ router.post('/login', AuthController.login);
 
 // rotas de criações de estudos
 router.post('/registerStudy', authMiddleware, StudyLogsController.studyRegister);
+router.post('/addSkill', authMiddleware, SkillsController.addSkill);
 export default router;

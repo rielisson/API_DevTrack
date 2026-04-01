@@ -1,4 +1,4 @@
-import StudyServices from "../services/study.services.js";
+import StudyService from "../services/study.service.js";
 
 class StudyLogsController {
     static async studyRegister(req, res) {
@@ -6,8 +6,8 @@ class StudyLogsController {
 
             const { descricao, categoria, duracao } = req.body;
             const userId = req.userId;
-            const registro = await StudyServices.CreateTask(descricao, categoria, duracao, userId);
-            console.log(registro);
+            const registro = await StudyService.CreateTask(descricao, categoria, duracao, userId);
+            
             return res.status(200).json({ msg: 'Registro de estudo registrado com sucesso.' })
         } catch (error) {
             console.error("❌ ERRO DETALHADO:", error.errors ? error.errors[0].message : error.message);
