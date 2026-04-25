@@ -1,7 +1,7 @@
 import sequelize from "../config/db.js";
-import User from "./user.model.js";
-import StudyLogsModel from "./studyLogs.model.js";
-import SkillsModel from "./skills.model.js";
+import User from "./user-model.js";
+import StudyLogsModel from "./study-logs-model.js";
+import SkillsModel from "./skills-model.js";
 
 
 // DEFINIÇÃO DAS ASSOCIAÇÕES (CHAVES ESTRANGEIRAS) ---
