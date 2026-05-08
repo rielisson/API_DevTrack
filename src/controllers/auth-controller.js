@@ -41,8 +41,7 @@ export async function login(req, res) {
             sameSite: 'strict',
             maxAge: 86400000
         })
-
-        return res.status(200).json({ msg: "Usuario Logado com sucesso.", user: { id: user.id, email: user.email } });
+        return res.status(200).json({ msg: "Usuario Logado com sucesso.", user: { id: user.id ,email: user.email, name: user.name } });
     } catch (error) {
         return res.status(500).json({ msg: "Erro no servidor." });
     }
