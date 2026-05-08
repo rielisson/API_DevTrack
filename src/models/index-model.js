@@ -24,4 +24,6 @@ SkillsModel.belongsTo(User, {
 })
 
 
+
+
 export default { sequelize, User, StudyLogsModel, SkillsModel}

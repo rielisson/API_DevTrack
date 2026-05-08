@@ -3,11 +3,21 @@ import express from 'express';
 import allRoutes from './routes/route.js';
 import db from './models/index-model.js';
 import cookieParser from "cookie-parser";
+import cors from 'cors';
+import sequelize from './config/db.js';
+
 
 const app = express();
 
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
+}))
+
 app.use(cookieParser());
 app.use(express.json());
+
 
 app.use('/auth', allRoutes);
 
@@ -16,12 +26,8 @@ const port = process.env.PORT || 3000;
 
 async function startApp() {
     try {
-        // await db.sequelize.sync(
-        // );
-        // console.log('✅ Banco de dados sincronizado e tabelas criadas!');
-
-        app.listen(port,() => {
-        console.log("🚀 Servidor rodando na porta 3000");
+        app.listen(port, () => {
+            console.log("🚀 Servidor rodando na porta 3000");
         })
     } catch (error) {
         console.log('❌ Erro ao iniciar o sistema:', error);

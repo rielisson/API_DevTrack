@@ -5,10 +5,10 @@ import jwt from 'jsonwebtoken';
 
 export async function signup(req, res) {
     try {
-        let { email, senha } = req.body;
+        let { name, email, senha } = req.body;
         const saltRounds = 10;
         let hashPassword = await bcrypt.hash(senha, saltRounds);
-        let createUser = await signupService({ email, senha: hashPassword });
+        let createUser = await signupService({ name, email, senha: hashPassword });
         res.status(201).json({ msg: "Usuario criado com sucesso." })
     } catch (error) {
         return res.status(400).json({ msg: "Error ao criar Usuario." });
