@@ -12,3 +12,13 @@ export async function createSkill(nome, level, userId) {
         throw error;
     }
 }
+
+
+export async function getskills(userId) {
+    try {
+        const skills = await SkillsModel.count({where: {userId} })
+        return skills;
+    } catch (error) {
+        throw error;
+    }
+}

@@ -26,6 +26,8 @@ const port = process.env.PORT || 3000;
 
 async function startApp() {
     try {
+        // await sequelize.sync({ alter: true });
+        // console.log('Tabelas criadas/atualizadas com sucesso! ✨');
         app.listen(port, () => {
             console.log("🚀 Servidor rodando na porta 3000");
         })

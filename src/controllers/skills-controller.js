@@ -1,4 +1,4 @@
-import {createSkill} from "../services/skills-service.js";
+import {createSkill, getskills} from "../services/skills-service.js";
 
 export async function addSkill(req, res) {
     try {
@@ -10,4 +10,15 @@ export async function addSkill(req, res) {
     } catch (error) {
         return res.status(500).json({ msg: 'Erro ao adicionar habilidade.' });
     }
+}
+
+export async function getSkills(req, res) {
+    try {
+        const userId = req.userId;
+        const getSkills = await getskills(userId);
+        console.log(getSkills);
+        return res.status(201).json({skills: getSkills});
+    } catch (error) {
+        res.status(500).json({msg: "Erro ao pegar quantidade de skills." + error});
+    };
 }

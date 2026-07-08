@@ -12,15 +12,15 @@ const sequelize = new Sequelize(
   }
 );
 
-// async function testConnection() {
-//   try {
-//     await sequelize.authenticate();
-//     console.log('✅ Conexão com o MySQL estabelecida com sucesso!');
-//   } catch (error) {
-//     console.error('❌ Não foi possível conectar ao banco de dados:', error);
-//   }
-// }
+async function testConnection() {
+  try {
+    await sequelize.authenticate();
+    console.log('✅ Conexão com o MySQL estabelecida com sucesso!');
+  } catch (error) {
+    console.error('❌ Não foi possível conectar ao banco de dados:', error);
+  }
+}
 
-// testConnection();
+testConnection();
 
 export default sequelize;

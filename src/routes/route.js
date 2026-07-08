@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {signup, login} from '../controllers/auth-controller.js';
-import {addSkill} from '../controllers/skills-controller.js';
+import {addSkill, getSkills} from '../controllers/skills-controller.js';
 import {studyRegister, getStudyLogs, deleteStudy} from '../controllers/study-controller.js';
 import authMiddleware from '../middleware/auth-middleware.js';
 const router = Router();
@@ -16,5 +16,6 @@ router.post('/login', login);
 router.get('/getStudy', authMiddleware, getStudyLogs);
 router.post('/registerStudy', authMiddleware, studyRegister);
 router.post('/addSkill', authMiddleware, addSkill);
+router.get('/getSkill', authMiddleware, getSkills);
 router.delete('/study/:id', authMiddleware, deleteStudy);
 export default router;
