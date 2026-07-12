@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {signup, login} from '../controllers/auth-controller.js';
-import {addSkill, getSkills} from '../controllers/skills-controller.js';
+import {addSkill, fecthSkills, getSkillsCount} from '../controllers/skills-controller.js';
 import {studyRegister, getStudyLogs, deleteStudy} from '../controllers/study-controller.js';
 import authMiddleware from '../middleware/auth-middleware.js';
 const router = Router();
@@ -16,6 +16,7 @@ router.post('/login', login);
 router.get('/getStudy', authMiddleware, getStudyLogs);
 router.post('/registerStudy', authMiddleware, studyRegister);
 router.post('/addSkill', authMiddleware, addSkill);
-router.get('/getSkill', authMiddleware, getSkills);
+router.get('/getSkillCount', authMiddleware, getSkillsCount); // Pega a quantidade de Skills que o usuario tem até o momento da request.
+router.get('/getAllSkills', authMiddleware, fecthSkills); // Pega as skills do Usuario.
 router.delete('/study/:id', authMiddleware, deleteStudy);
 export default router;

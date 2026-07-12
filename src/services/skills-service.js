@@ -14,10 +14,19 @@ export async function createSkill(nome, level, userId) {
 }
 
 
-export async function getskills(userId) {
+export async function getSkillsCountService(userId) {
     try {
         const skills = await SkillsModel.count({where: {userId} })
         return skills;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function fecthSkillsService(userId) {
+    try {
+        const skillsUser = await SkillsModel.findAll({where: {userId : userId}})
+        return skillsUser;
     } catch (error) {
         throw error;
     }

@@ -12,10 +12,15 @@ const SkillsModel = sequelize.define(
         },
         nome: {
             type: DataTypes.STRING(255),
-            allowNull: false
+            allowNull: false,
+            unique: true
         },
         level: {
             type: DataTypes.STRING(255),
+            allowNull: false
+        },
+        nivel: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         userId: {
