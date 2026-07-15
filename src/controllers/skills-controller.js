@@ -5,6 +5,7 @@ export async function addSkill(req, res) {
         const { nome, level, nivel } = req.body;
         const userId = req.userId;
         const skill = await createSkill(nome, level, nivel, userId);
+        console.log(skill);
         return res.status(200).json({ msg: 'Habilidade adicionada com sucesso.' });
     } catch (error) {
         return res.status(500).json({ msg: 'Erro ao adicionar habilidade.' });
