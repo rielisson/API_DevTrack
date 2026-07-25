@@ -1,9 +1,9 @@
 import SkillsModel from "../models/skills-model.js";
 
-export async function createSkill(nome, level, nivel, userId) {
+export async function createSkill(name, level, nivel, userId) {
     try {
         const skill = await SkillsModel.create({
-            nome: nome,
+            name: name,
             level: level,
             nivel: nivel,
             userId: userId

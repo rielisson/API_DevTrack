@@ -3,9 +3,9 @@ import {createTask, getStudyByUserId, deleteStudyByUserId} from "../services/stu
 export async function studyRegister(req, res) {
     try {
 
-        const { descricao, categoria, duracao } = req.body;
+        const { title, description, category, duration } = req.body;
         const userId = req.userId;
-        const registro = await createTask(descricao, categoria, duracao, userId);
+        const record = await createTask(title, description, category, duration, userId);
 
         return res.status(200).json({ msg: 'Registro de estudo registrado com sucesso.' })
     } catch (error) {

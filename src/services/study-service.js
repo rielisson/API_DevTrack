@@ -1,14 +1,14 @@
 import StudyLogsModel from "../models/study-logs-model.js";
 
-export async function createTask(descricao, categoria, duracao, userId) {
+export async function createTask(title, description, category, duration, userId) {
     try {
         const createTask = await StudyLogsModel.create({
-            descricao: descricao,
-            categoria: categoria,
-            duracao: duracao,
+            title: title,
+            description: description,
+            category: category,
+            duration: duration,
             userId: userId
         })
-        console.log(createTask);
         return createTask;
     } catch (erro) {
         throw erro;
@@ -17,7 +17,6 @@ export async function createTask(descricao, categoria, duracao, userId) {
 export async function getStudyByUserId(userId) {
     try {
         const getStudy = await StudyLogsModel.findAll({ where: { userId: userId } });
-        console.log(getStudy)
         return getStudy;
     } catch (error) {
         throw error;

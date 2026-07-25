@@ -10,7 +10,7 @@ const SkillsModel = sequelize.define(
             autoIncrement: true,
             primaryKey: true
         },
-        nome: {
+        name: {
             type: DataTypes.STRING(255),
             allowNull: false,
             unique: true

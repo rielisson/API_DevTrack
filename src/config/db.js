@@ -11,7 +11,6 @@ const sequelize = new Sequelize(
     dialect: 'postgres'
   }
 );
-
 async function testConnection() {
   try {
     await sequelize.authenticate();

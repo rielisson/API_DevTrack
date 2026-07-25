@@ -22,14 +22,14 @@ app.use(express.json());
 app.use('/auth', allRoutes);
 
 
-const port = process.env.PORT || 3000;
-
+const port = process.env.DB_PORT || 3000;
 async function startApp() {
     try {
-        // await sequelize.sync({ alter: true });
-        // console.log('Tabelas criadas/atualizadas com sucesso! ✨');
+        //await sequelize.sync({ alter: true });
+        // await sequelize.sync({ force: true }); // ⚠️ Apaga e recria todas as tabelas
+        //console.log('Tabelas criadas/atualizadas com sucesso! ✨');
         app.listen(port, () => {
-            console.log("🚀 Servidor rodando na porta 3000");
+            console.log("🚀 Servidor rodando na porta: ", port );
         })
     } catch (error) {
         console.log('❌ Erro ao iniciar o sistema:', error);

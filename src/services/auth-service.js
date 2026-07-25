@@ -1,11 +1,11 @@
 import User from "../models/user-model.js"
 
-export async function signupService({ name, email, senha }) {
+export async function signupService({ name, email, password }) {
     try {
         const user = await User.create({
             name: name,
             email: email,
-            senha: senha
+            password: password
         });
         return user;
     } catch (error) {

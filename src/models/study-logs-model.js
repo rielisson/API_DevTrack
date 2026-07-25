@@ -9,15 +9,19 @@ const StudyLogsModel = sequelize.define(
             autoIncrement: true,
             primaryKey: true
         },
-        descricao: {
+        title: {
             type: DataTypes.STRING(255),
             allowNull: false
         },
-        categoria: {
+        description: {
             type: DataTypes.STRING(255),
             allowNull: false
         },
-        duracao: {
+        category: {
+            type: DataTypes.STRING(255),
+            allowNull: false
+        },
+        duration: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
