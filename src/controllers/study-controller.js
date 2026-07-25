@@ -3,7 +3,8 @@ import {createTask, getStudyByUserId, deleteStudyByUserId} from "../services/stu
 export async function studyRegister(req, res) {
     try {
 
-        const { title, description, category, duration } = req.body;
+        const { title, description, category, duration } = req.body.data;
+        if(!title.trim()) return;
         const userId = req.userId;
         const record = await createTask(title, description, category, duration, userId);
 
@@ -19,11 +20,10 @@ export async function getStudyLogs(req, res) {
     try {
         const userId = req.userId;
         const getStudy = await getStudyByUserId(userId);
-
         if (!getStudy) {
             return res.status(404).json({ msg: "Estudo não encontrado." })
         }
-        return res.status(200).json({ msg: getStudy });
+        return res.status(200).json({ data: getStudy });
     } catch (error) {
         return res.status(400).json({ mgs: "não foi possivel pega os estudos." })
     }

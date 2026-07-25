@@ -2,10 +2,9 @@ import {createSkill, getSkillsCountService, fecthSkillsService} from "../service
 
 export async function addSkill(req, res) {
     try {
-        const { nome, level, nivel } = req.body;
+        const { name, level, nivel } = req.body;
         const userId = req.userId;
-        const skill = await createSkill(nome, level, nivel, userId);
-        console.log(skill);
+        const skill = await createSkill(name, level, nivel, userId);
         return res.status(200).json({ msg: 'Habilidade adicionada com sucesso.' });
     } catch (error) {
         return res.status(500).json({ msg: 'Erro ao adicionar habilidade.' });
