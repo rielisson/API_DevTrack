@@ -12,15 +12,24 @@ const User = sequelize.define(
         name: {
             type: DataTypes.STRING(255),
             allowNull: false,
+            validate: {
+                notEmpty: { msg: "Nome não pode ser vazio." }
+            }
         },
         email: {
             type: DataTypes.STRING(255),
             allowNull: false,
             unique: true,
+            validate: {
+                notEmpty: { msg: "Email não pode ser vazio." }
+            }
         },
         password: {
             type: DataTypes.STRING(255),
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notEmpty: { msg: "senha não pode ser vazio." }
+            }
         }
     },
 )
