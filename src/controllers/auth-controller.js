@@ -6,6 +6,9 @@ import jwt from 'jsonwebtoken';
 export async function signup(req, res) {
     try {
         let { name, email, password } = req.body;
+        if(!name || !email || !password) {
+            return res.status(400).json({message: "Nome, email ou senha são obrigatórios."});
+        }
         const saltRounds = 10;
         let hashPassword = await bcrypt.hash(password, saltRounds);
         let createUser = await signupService({ name, email, password: hashPassword });
@@ -19,7 +22,7 @@ export async function login(req, res) {
     const { email, password } = req.body;
     try {
         const user = await User.findOne({ where: { email } });
-        if (!user.email) {
+        if (!user) {
             return res.status(401).json({ msg: "Email não encontrado." });
         }
 
@@ -41,6 +44,6 @@ export async function login(req, res) {
         })
         return res.status(200).json({ msg: "Usuario Logado com sucesso.", user: { id: user.id ,email: user.email, name: user.name } });
     } catch (error) {
-        return res.status(500).json({ msg: "Erro no servidor.", error });
+        return res.status(500).json({ msg: "Erro no servidor"});
     }
 }
